@@ -1,0 +1,48 @@
+const student_list = [
+  {
+    name: "vipul",
+    rollNo: 1,
+    branch :"cse",
+  },
+  {
+    name: "himanshu",
+    rollNo: 2,
+    branch :"cse",
+  },
+  {
+    name: "saurabh",
+    rollNo: 3,
+    branch :"cse",
+  },
+];
+
+function getStudent_details() {
+  console.log("Geeting Students Details");
+  setTimeout(() => {
+    
+    student_list.forEach((s) => {
+      console.log(s.rollNo);
+      console.log(s.name);
+      console.log(s.branch);
+    });
+  }, 1000);
+}
+
+function createStudent_details(newStudentdetails) {
+  console.log("Creating Student Details");
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      student_list.push(newStudentdetails);
+      let flag = true;
+      if (flag) {
+        resolve();
+      } else {
+        reject("errorrrrr.....");
+      }
+    }, 5000);
+  });
+}
+
+createStudent_details({ name: "Prakash", rollNo: 4 , branch: "cse"})
+  .then(getStudent_details)
+  .catch(console.error());
